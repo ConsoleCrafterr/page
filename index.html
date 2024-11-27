@@ -6,47 +6,129 @@
     <title>Downloads - ConsoleCrafter</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #1f1f1f;
-            color: #fff;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #f0f0f0;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
         header {
-            background-color: #333;
+            background: linear-gradient(90deg, #333, #444);
             padding: 20px;
             text-align: center;
         }
         header h1 {
             margin: 0;
             font-size: 2.5em;
-            color: #fff;
+            color: #ff5733;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
         }
         .download-container {
-            padding: 20px;
+            padding: 40px 10%;
             text-align: left;
-            margin: 0 10%;
         }
         .download-btn {
-            background-color: #ff5733;
+            background: linear-gradient(90deg, #ff5733, #ff784e);
             color: white;
             font-size: 1.2em;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            cursor: pointer;
             text-decoration: none;
-            margin: 10px 0; /* Abstände zwischen den Buttons */
-            display: block; /* Stapelt Buttons untereinander */
+            margin: 15px 0;
+            display: block;
             width: fit-content;
-            border-radius: 0; /* Eckige Buttons */
+            border-radius: 5px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
         .download-btn:hover {
-            background-color: #c14d22;
+            background: linear-gradient(90deg, #e14b2d, #e8674a);
+            box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
         }
         .download-btn.disabled {
-            background-color: #555;
-            color: #ccc;
+            background: #555;
+            color: #999;
             cursor: not-allowed;
+            box-shadow: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1f1f1f;
+            font-size: 1em;
+            color: #777;
+            border-top: 1px solid #333;
+        }
+        footer a {
+            color: #ff5733;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Tic-Tac-Toe Container */
+        .game-container {
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            height: 260px;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 5px;
+        }
+        .cell {
+            width: 80px;
+            height: 80px;
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .cell:hover {
+            background-color: #555;
+        }
+        .cell.taken {
+            pointer-events: none;
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ff5733;
+        }
+        .restart-btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .restart-btn {
+            background: #ff5733;
+            color: white;
+            font-size: 1em;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .restart-btn:hover {
+            background: #e14b2d;
         }
     </style>
 </head>
@@ -74,6 +156,133 @@
         <button class="download-btn disabled">Download 9 - Kommt noch</button>
         <button class="download-btn disabled">Download 10 - Kommt noch</button>
     </div>
+
+    <!-- Tic-Tac-Toe Game -->
+    <div class="game-container">
+        <div class="board" id="board"></div>
+        <div class="message" id="message">Es ist dein Zug (X)</div>
+    </div>
+
+    <!-- Restart Button -->
+    <div class="restart-btn-container" style="position: absolute; top: 410px; left: 50%; transform: translateX(-50%);">
+        <button class="restart-btn" id="restart-btn">Spiel neustarten</button>
+    </div>
+
+    <footer>
+        <p>Made by <a href="https://youtube.com/@consolecrafterr" target="_blank">ConsoleCrafter</a></p>
+    </footer>
+
+    <script>
+        // Tic-Tac-Toe Spiel-Logik
+        const board = document.getElementById("board");
+        const message = document.getElementById("message");
+        const restartBtn = document.getElementById("restart-btn");
+
+        const emptyBoard = [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
+        ];
+
+        let currentPlayer = 'X';
+        let gameBoard = JSON.parse(JSON.stringify(emptyBoard));
+        let gameOver = false;
+
+        // Funktion zum Erstellen des Spielfelds
+        function createBoard() {
+            board.innerHTML = '';
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 3; col++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    cell.addEventListener('click', () => makeMove(row, col), { once: true });
+                    board.appendChild(cell);
+                }
+            }
+        }
+
+        // Funktion, um den Zug zu machen
+        function makeMove(row, col) {
+            if (gameBoard[row][col] !== '' || gameOver) return;
+
+            gameBoard[row][col] = currentPlayer;
+            updateBoard();
+
+            if (checkWinner(currentPlayer)) {
+                gameOver = true;
+                message.textContent = `Spieler ${currentPlayer} gewinnt!`;
+            } else if (isBoardFull()) {
+                gameOver = true;
+                message.textContent = "Unentschieden!";
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                message.textContent = `Es ist der Zug von ${currentPlayer}`;
+                if (currentPlayer === 'O') {
+                    aiMove();
+                }
+            }
+        }
+
+        // Funktion, um das Spielfeld zu aktualisieren
+        function updateBoard() {
+            const cells = document.querySelectorAll('.cell');
+            let index = 0;
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 3; col++) {
+                    cells[index].textContent = gameBoard[row][col];
+                    index++;
+                }
+            }
+        }
+
+        // Funktion zum Überprüfen des Gewinners
+        function checkWinner(player) {
+            for (let row = 0; row < 3; row++) {
+                if (gameBoard[row][0] === player && gameBoard[row][1] === player && gameBoard[row][2] === player) {
+                    return true;
+                }
+            }
+            for (let col = 0; col < 3; col++) {
+                if (gameBoard[0][col] === player && gameBoard[1][col] === player && gameBoard[2][col] === player) {
+                    return true;
+                }
+            }
+            if (gameBoard[0][0] === player && gameBoard[1][1] === player && gameBoard[2][2] === player) {
+                return true;
+            }
+            if (gameBoard[0][2] === player && gameBoard[1][1] === player && gameBoard[2][0] === player) {
+                return true;
+            }
+            return false;
+        }
+
+        // Funktion, um zu überprüfen, ob das Spielfeld voll ist
+        function isBoardFull() {
+            return gameBoard.every(row => row.every(cell => cell !== ''));
+        }
+
+        // KI-Zug
+        function aiMove() {
+            if (gameOver) return;
+
+            // Einfache KI, wählt das beste freie Feld
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 3; col++) {
+                    if (gameBoard[row][col] === '') {
+                        makeMove(row, col);
+                        return;
+                    }
+                }
+            }
+        }
+
+        // Spiel neu starten
+        restartBtn.addEventListener('click', () => {
+            location.reload();
+        });
+
+        createBoard();
+    </script>
 
 </body>
 </html>

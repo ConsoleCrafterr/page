@@ -3,98 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMC Pack Download</title>
+    <title>Downloads - ConsoleCrafter</title>
     <style>
-        /* Old-School Stil */
         body {
+            font-family: Arial, sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
             margin: 0;
             padding: 0;
-            font-family: 'Courier New', Courier, monospace; /* Klassische Schriftart */
-            background-color: #f0f0f0; /* Helles Grau für alten Stil */
-            color: #333; /* Dunkles Grau für Text */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            overflow: auto; /* Scrollen erlauben */
         }
-
-        /* Container für den Inhalt */
-        .container {
+        header {
+            background-color: #333;
+            padding: 20px;
             text-align: center;
-            background: #fff;
-            border: 2px solid #333;
-            padding: 30px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
         }
-
-        /* Titel */
-        h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-decoration: underline;
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
-
-        /* Button-Stile */
-        .button {
-            display: block;
-            width: 80%;
-            margin: 10px auto;
-            background-color: #4CAF50;
-            padding: 15px;
+        .download-container {
+            padding: 20px;
+            text-align: center;
+        }
+        .download-btn {
+            background-color: #ff5733;
+            color: white;
             font-size: 1.2em;
-            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
             text-decoration: none;
-            text-align: center;
-            border: 2px solid #333;
-            font-family: 'Courier New', Courier, monospace;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 10px;
         }
-
-        /* Hover-Effekt für den Button */
-        .button:hover {
-            background-color: #45a049;
-        }
-
-        /* Responsives Design für kleinere Bildschirme */
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5em;
-            }
-            .button {
-                font-size: 1em;
-                padding: 12px;
-            }
+        .download-btn:hover {
+            background-color: #c14d22;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>CMC Pack Download</h1>
-        <a href="https://workupload.com/start/mWAButSdpC5" class="button">CMC Pack Herunterladen</a>
-        
-        <!-- Weitere Buttons mit "Kommt noch" Text -->
-        <!-- Beispiel für 50 Buttons -->
-        <div id="buttonContainer">
-            <!-- Hier wird der JavaScript-Teil die Buttons einfügen -->
-        </div>
-    </div>
+    <header>
+        <h1>Downloads von ConsoleCrafter</h1>
+    </header>
 
-    <script>
-        // Dynamisch 50 Buttons mit "Kommt noch" Text erstellen
-        const container = document.getElementById('buttonContainer');
-        for (let i = 1; i <= 50; i++) {
-            const button = document.createElement('a');
-            button.href = "#";
-            button.classList.add('button');
-            button.textContent = 'Kommt noch ' + i;
-            container.appendChild(button);
-        }
-    </script>
+    <div class="download-container">
+        <h2>CMC Pack v6</h2>
+        <p>Hier kannst du das CMC Pack v6 herunterladen.</p>
+        <a href="https://workupload.com/file/mWAButSdpC5" class="download-btn" target="_blank">CMC Pack v6 herunterladen</a>
+    </div>
 
 </body>
 </html>

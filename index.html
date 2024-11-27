@@ -35,18 +35,20 @@
             border: none;
             cursor: pointer;
             text-decoration: none;
-            border-radius: 8px;
             margin: 10px 0;
             display: inline-block;
+            border-radius: 0; /* Eckige Buttons */
         }
         .download-btn:hover {
             background-color: #c14d22;
         }
+        .download-btn.disabled {
+            background-color: #555;
+            color: #ccc;
+            cursor: not-allowed;
+        }
         .downloads-list {
             margin-top: 30px;
-        }
-        .coming-soon {
-            color: #aaa;
         }
     </style>
 </head>
@@ -63,18 +65,16 @@
 
         <div class="downloads-list">
             <h3>Weitere Downloads:</h3>
-            <ul>
-                <li><span class="coming-soon">Download 1 - Kommt noch</span></li>
-                <li><span class="coming-soon">Download 2 - Kommt noch</span></li>
-                <li><span class="coming-soon">Download 3 - Kommt noch</span></li>
-                <li><span class="coming-soon">Download 4 - Kommt noch</span></li>
-                <li><span class="coming-soon">Download 5 - Kommt noch</span></li>
-                <li><span class="coming-soon">Download 6 - Kommt noch</span></li>
-                <li><span class="coming-soon">Download 7 - Kommt noch</span></li>
-                <li><span class="coming-soon">Download 8 - Kommt noch</span></li>
-                <li><span class="coming-soon">Download 9 - Kommt noch</span></li>
-                <li><span class="coming-soon">Download 10 - Kommt noch</span></li>
-            </ul>
+            <button class="download-btn disabled">Download 1 - Kommt noch</button><br>
+            <button class="download-btn disabled">Download 2 - Kommt noch</button><br>
+            <button class="download-btn disabled">Download 3 - Kommt noch</button><br>
+            <button class="download-btn disabled">Download 4 - Kommt noch</button><br>
+            <button class="download-btn disabled">Download 5 - Kommt noch</button><br>
+            <button class="download-btn disabled">Download 6 - Kommt noch</button><br>
+            <button class="download-btn disabled">Download 7 - Kommt noch</button><br>
+            <button class="download-btn disabled">Download 8 - Kommt noch</button><br>
+            <button class="download-btn disabled">Download 9 - Kommt noch</button><br>
+            <button class="download-btn disabled">Download 10 - Kommt noch</button><br>
         </div>
     </div>
 

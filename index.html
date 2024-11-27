@@ -35,8 +35,9 @@
             border: none;
             cursor: pointer;
             text-decoration: none;
-            margin: 10px 0;
-            display: inline-block;
+            margin: 10px 0; /* Abstände zwischen den Buttons */
+            display: block; /* Stapelt Buttons untereinander */
+            width: fit-content;
             border-radius: 0; /* Eckige Buttons */
         }
         .download-btn:hover {
@@ -47,9 +48,6 @@
             color: #ccc;
             cursor: not-allowed;
         }
-        .downloads-list {
-            margin-top: 30px;
-        }
     </style>
 </head>
 <body>
@@ -59,23 +57,22 @@
     </header>
 
     <div class="download-container">
-        <h2>CMC Pack v6</h2>
-        <p>Hier kannst du das CMC Pack v6 herunterladen:</p>
-        <a href="https://workupload.com/file/mWAButSdpC5" class="download-btn" target="_blank">CMC Pack v6 herunterladen</a>
+        <!-- CMC Pack v6 Button -->
+        <a href="https://workupload.com/file/mWAButSdpC5" class="download-btn" target="_blank">CMC Pack Latest</a>
 
-        <div class="downloads-list">
-            <h3>Weitere Downloads:</h3>
-            <button class="download-btn disabled">Download 1 - Kommt noch</button><br>
-            <button class="download-btn disabled">Download 2 - Kommt noch</button><br>
-            <button class="download-btn disabled">Download 3 - Kommt noch</button><br>
-            <button class="download-btn disabled">Download 4 - Kommt noch</button><br>
-            <button class="download-btn disabled">Download 5 - Kommt noch</button><br>
-            <button class="download-btn disabled">Download 6 - Kommt noch</button><br>
-            <button class="download-btn disabled">Download 7 - Kommt noch</button><br>
-            <button class="download-btn disabled">Download 8 - Kommt noch</button><br>
-            <button class="download-btn disabled">Download 9 - Kommt noch</button><br>
-            <button class="download-btn disabled">Download 10 - Kommt noch</button><br>
-        </div>
+        <!-- Download-Buttons -->
+        <a href="https://workupload.com/file/CMknZXYs7VC" class="download-btn" target="_blank">CMC Pack v1</a>
+        <a href="https://workupload.com/file/57MZPMLmGyA" class="download-btn" target="_blank">CMC Pack v2</a>
+        <a href="https://workupload.com/file/hdTCS4eQhNK" class="download-btn" target="_blank">CMC Pack v3</a>
+        <a href="https://workupload.com/file/vuaqbmW37S4" class="download-btn" target="_blank">CMC Pack v4</a>
+        <a href="https://workupload.com/file/sb48xATfp6L" class="download-btn" target="_blank">CMC Pack v5</a>
+        <a href="https://workupload.com/file/mWAButSdpC5" class="download-btn" target="_blank">CMC Pack v6</a>
+
+        <!-- Inaktive Buttons -->
+        <button class="download-btn disabled">Download 7 - Kommt noch</button>
+        <button class="download-btn disabled">Download 8 - Kommt noch</button>
+        <button class="download-btn disabled">Download 9 - Kommt noch</button>
+        <button class="download-btn disabled">Download 10 - Kommt noch</button>
     </div>
 
 </body>

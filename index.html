@@ -69,67 +69,6 @@
         footer a:hover {
             text-decoration: underline;
         }
-        /* Tic-Tac-Toe Container */
-        .game-container {
-            position: absolute;
-            top: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 260px;
-            height: 260px;
-            background-color: #333;
-            border-radius: 10px;
-            padding: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-        .board {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            gap: 5px;
-        }
-        .cell {
-            width: 80px;
-            height: 80px;
-            background-color: #444;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2em;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .cell:hover {
-            background-color: #555;
-        }
-        .cell.taken {
-            pointer-events: none;
-        }
-        .message {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #ff5733;
-        }
-        .restart-btn-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .restart-btn {
-            background: #ff5733;
-            color: white;
-            font-size: 1em;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .restart-btn:hover {
-            background: #e14b2d;
-        }
     </style>
 </head>
 <body>
@@ -140,7 +79,7 @@
 
     <div class="download-container">
         <!-- CMC Pack v6 Button -->
-        <a href="https://workupload.com/file/mWAButSdpC5" class="download-btn" target="_blank">CMC Pack Latest</a>
+        <a href="https://workupload.com/file/Q9NRfDvZ5CS" class="download-btn" target="_blank">CMC Pack Latest</a>
         <a href="https://workupload.com/file/nPZ7dDCQUz4" class="download-btn" target="_blank">Discord Tools Latest</a>
 
         <!-- Download-Buttons -->
@@ -151,134 +90,12 @@
         <a href="https://workupload.com/file/sb48xATfp6L" class="download-btn" target="_blank">CMC Pack v5</a>
         <a href="https://workupload.com/file/mWAButSdpC5" class="download-btn" target="_blank">CMC Pack v6</a>
         <a href="https://workupload.com/file/nPZ7dDCQUz4" class="download-btn" target="_blank">Discord Tools v1</a>
-    </div>
-
-    <!-- Tic-Tac-Toe Game -->
-    <div class="game-container">
-        <div class="board" id="board"></div>
-        <div class="message" id="message">Es ist dein Zug (X)</div>
-    </div>
-
-    <!-- Restart Button -->
-    <div class="restart-btn-container" style="position: absolute; top: 410px; left: 50%; transform: translateX(-50%);">
-        <button class="restart-btn" id="restart-btn">Spiel neustarten</button>
+        <a href="https://workupload.com/file/Q9NRfDvZ5CS" class="download-btn" target="_blank">Discord Tools v2</a>
     </div>
 
     <footer>
         <p>Made by <a href="https://youtube.com/@consolecrafterr" target="_blank">ConsoleCrafter</a></p>
     </footer>
-
-    <script>
-        // Tic-Tac-Toe Spiel-Logik
-        const board = document.getElementById("board");
-        const message = document.getElementById("message");
-        const restartBtn = document.getElementById("restart-btn");
-
-        const emptyBoard = [
-            ['', '', ''],
-            ['', '', ''],
-            ['', '', '']
-        ];
-
-        let currentPlayer = 'X';
-        let gameBoard = JSON.parse(JSON.stringify(emptyBoard));
-        let gameOver = false;
-
-        // Funktion zum Erstellen des Spielfelds
-        function createBoard() {
-            board.innerHTML = '';
-            for (let row = 0; row < 3; row++) {
-                for (let col = 0; col < 3; col++) {
-                    const cell = document.createElement('div');
-                    cell.classList.add('cell');
-                    cell.addEventListener('click', () => makeMove(row, col), { once: true });
-                    board.appendChild(cell);
-                }
-            }
-        }
-
-        // Funktion, um den Zug zu machen
-        function makeMove(row, col) {
-            if (gameBoard[row][col] !== '' || gameOver) return;
-
-            gameBoard[row][col] = currentPlayer;
-            updateBoard();
-
-            if (checkWinner(currentPlayer)) {
-                gameOver = true;
-                message.textContent = `Spieler ${currentPlayer} gewinnt!`;
-            } else if (isBoardFull()) {
-                gameOver = true;
-                message.textContent = "Unentschieden!";
-            } else {
-                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                message.textContent = `Es ist der Zug von ${currentPlayer}`;
-                if (currentPlayer === 'O') {
-                    aiMove();
-                }
-            }
-        }
-
-        // Funktion, um das Spielfeld zu aktualisieren
-        function updateBoard() {
-            const cells = document.querySelectorAll('.cell');
-            let index = 0;
-            for (let row = 0; row < 3; row++) {
-                for (let col = 0; col < 3; col++) {
-                    cells[index].textContent = gameBoard[row][col];
-                    index++;
-                }
-            }
-        }
-
-        // Funktion zum Überprüfen des Gewinners
-        function checkWinner(player) {
-            for (let row = 0; row < 3; row++) {
-                if (gameBoard[row][0] === player && gameBoard[row][1] === player && gameBoard[row][2] === player) {
-                    return true;
-                }
-            }
-            for (let col = 0; col < 3; col++) {
-                if (gameBoard[0][col] === player && gameBoard[1][col] === player && gameBoard[2][col] === player) {
-                    return true;
-                }
-            }
-            if (gameBoard[0][0] === player && gameBoard[1][1] === player && gameBoard[2][2] === player) {
-                return true;
-            }
-            if (gameBoard[0][2] === player && gameBoard[1][1] === player && gameBoard[2][0] === player) {
-                return true;
-            }
-            return false;
-        }
-
-        // Funktion, um zu überprüfen, ob das Spielfeld voll ist
-        function isBoardFull() {
-            return gameBoard.every(row => row.every(cell => cell !== ''));
-        }
-
-        // KI-Zug
-        function aiMove() {
-            if (gameOver) return;
-
-            // Einfache KI, wählt das beste freie Feld
-            for (let row = 0; row < 3; row++) {
-                for (let col = 0; col < 3; col++) {
-                    if (gameBoard[row][col] === '') {
-                        makeMove(row, col);
-                        return;
-                    }
-                }
-            }
-        }
-
-        // Spiel neu starten
-        restartBtn.addEventListener('click', () => {
-            location.reload();
-        });
-
-        createBoard();
-    </script>
 
 </body>
 </html>

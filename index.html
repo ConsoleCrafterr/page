@@ -9,39 +9,67 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
         }
         .navbar {
-            position: absolute;
-            top: 10px;
-            left: 10px;
             display: flex;
             flex-direction: column;
+            gap: 20px;
         }
         .navbar a {
-            background-color: #4CAF50;
             color: white;
-            padding: 10px;
+            padding: 15px 30px;
             text-align: center;
             text-decoration: none;
-            margin: 5px 0;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
         .navbar a:hover {
+            transform: scale(1.05);
+        }
+        .navbar a:active {
+            transform: scale(1);
+        }
+        .navbar a:focus {
+            outline: none;
+            border: 2px solid #45a049;
+        }
+
+        /* Button specific colors */
+        .downloads {
+            background-color: #4CAF50; /* Green */
+        }
+        .youtube {
+            background-color: #FF0000; /* YouTube Red */
+        }
+        .discord {
+            background-color: #7289DA; /* Discord Blue */
+        }
+
+        /* Button hover effects */
+        .downloads:hover {
             background-color: #45a049;
+        }
+        .youtube:hover {
+            background-color: #e60000;
+        }
+        .discord:hover {
+            background-color: #5b6eae;
         }
     </style>
 </head>
 <body>
 
     <div class="navbar">
-        <a href="https://consolecrafterr.github.io/page/downloads" target="_blank">Downloads</a>
-        <a href="https://youtube.com/@consolecrafterr" target="_blank">YouTube</a>
-        <a href="https://dsc.gg/survival-cmc" target="_blank">Discord</a>
+        <a href="https://consolecrafterr.github.io/page/downloads" target="_blank" class="downloads">Downloads</a>
+        <a href="https://youtube.com/@consolecrafterr" target="_blank" class="youtube">YouTube</a>
+        <a href="https://dsc.gg/survival-cmc" target="_blank" class="discord">Discord</a>
     </div>
 
 </body>

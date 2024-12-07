@@ -13,7 +13,134 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConsoleCrafter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .navbar a, .navbar button {
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .navbar a:hover, .navbar button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .downloads {
+            background: linear-gradient(to right, #4CAF50, #45a049);
+        }
+
+        .youtube {
+            background: linear-gradient(to right, #FF0000, #cc0000);
+        }
+
+        .discord {
+            background: linear-gradient(to right, #7289DA, #5b6eae);
+        }
+
+        .minecraft {
+            background-color: #ff3636;
+        }
+
+        .minecraft:hover {
+            box-shadow: 0 8px 16px rgba(255, 54, 54, 0.6);
+        }
+
+        #server-info {
+            display: none;
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button {
+            background-color: #333;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class="navbar">
+            <a href="https://consolecrafterr.github.io/page/downloads" target="_blank" class="downloads">Downloads</a>
+            <a href="https://youtube.com/@consolecrafterr" target="_blank" class="youtube">YouTube</a>
+            <a href="https://dsc.gg/survival-cmc" target="_blank" class="discord">Discord</a>
+            <button onclick="showMinecraftServer()" class="minecraft">Minecraft Server</button>
+        </div>
+    </div>
+
+    <script>
+        function showMinecraftServer() {
+            const contentDiv = document.getElementById('content');
+            // Clear the page
+            contentDiv.innerHTML = `
+                <div style="text-align: center;">
+                    <p style="font-size: 24px; color: #333;">IP: receive-gps.gl.at.ply.gg:63335</p>
+                    <button class="back-button" onclick="goBack()">Zurück</button>
+                </div>
+            `;
+        }
+
+        function goBack() {
+            // Reload the page to return to the original content
+            location.reload();
+        }
+    </script>
+</body>
+</html>
+
             font-family: 'Roboto', sans-serif;
             box-sizing: border-box;
             transition: background-color 0.3s, color 0.3s;

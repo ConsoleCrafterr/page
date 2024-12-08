@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezepte, Tier-Tipps und mehr</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #28a745, #85e0a1);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.3em;
+        }
+
+        nav {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            background: #218838;
+            padding: 10px 0;
+            border-radius: 30px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: white;
+            font-size: 1.1em;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #1e7e34;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #28a745;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 10px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p, ul {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #f4f4f4;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        footer {
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            font-size: 1.1em;
+            border-top: 2px solid #28a745;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 250px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .tip-card {
+            background: #e6f7ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: transform 0.2s;
+        }
+
+        .tip-card:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            nav a {
+                margin: 10px;
+            }
+
+            .content {
+                padding: 15px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Willkommen auf unserer Rezept- und Tier-Tipp-Seite!</h1>
+        <p>Finde leckere Rezepte, hilfreiche Tipps für Haustiere und spannende Ideen!</p>
+    </header>
+
+    <nav>
+        <a href="#rezepte">Rezepte</a>
+        <a href="#tiertipps">Tier-Tipps</a>
+        <a href="#coolesachen">Coole Sachen</a>
+        <a href="#impressum">Impressum</a>
+    </nav>
+
+    <div class="content">
+        <section id="rezepte">
+<section>
+    <h2>Leckere Rezepte</h2>
+    
+    <h3>Spaghetti Carbonara</h3>
+    <p>Zutaten: Spaghetti, Eier, Parmesan, Speck, Pfeffer, Salz.</p>
+    <p>Zubereitung: Koche die Spaghetti, brate den Speck und vermische alles mit den Eiern und dem Parmesan. Würzen und servieren!</p>
+
+    <h3>Veganes Curry</h3>
+    <p>Zutaten: Süßkartoffeln, Kokosmilch, Kichererbsen, Curry, Zwiebeln, Knoblauch.</p>
+    <p>Zubereitung: Brate die Zwiebeln und den Knoblauch an, füge die Gewürze hinzu und koche alles mit den restlichen Zutaten. Schmecken lassen!</p>
+
+    <h3>Caprese-Salat</h3>
+    <p>Zutaten: Tomaten, Mozzarella, frisches Basilikum, Olivenöl, Balsamico, Salz, Pfeffer.</p>
+    <p>Zubereitung: Tomaten und Mozzarella in Scheiben schneiden, mit Basilikum garnieren und mit Olivenöl und Balsamico beträufeln.</p>
+
+    <h3>Schokoladenkekse</h3>
+    <p>Zutaten: Mehl, Zucker, Butter, Eier, Schokoladentropfen, Vanilleextrakt, Backpulver.</p>
+    <p>Zubereitung: Mische alle Zutaten, forme kleine Kugeln und backe sie bei 180°C für ca. 10 Minuten.</p>
+
+    <h3>Lasagne</h3>
+    <p>Zutaten: Lasagneplatten, Hackfleisch, Tomatensauce, Béchamelsauce, Käse, Zwiebeln, Knoblauch.</p>
+    <p>Zubereitung: Schichte die Zutaten in einer Auflaufform und backe die Lasagne im Ofen für ca. 45 Minuten bei 180°C.</p>
+
+    <h3>Pancakes</h3>
+    <p>Zutaten: Mehl, Milch, Eier, Backpulver, Zucker, Butter.</p>
+    <p>Zubereitung: Mische die Zutaten und brate den Teig in einer Pfanne zu goldbraunen Pancakes.</p>
+    
+    <!-- Neue Rezepte -->
+    <h3>Griechischer Salat</h3>
+    <p>Zutaten: Gurken, Tomaten, Feta, rote Zwiebeln, Oliven, Olivenöl, Oregano.</p>
+    <p>Zubereitung: Schneide die Gurken und Tomaten, mische sie mit Zwiebeln, Feta und Oliven und träufele Olivenöl und Oregano darüber.</p>
+    
+    <h3>Quiche Lorraine</h3>
+    <p>Zutaten: Mürbeteig, Sahne, Eier, Speck, Zwiebeln, Käse, Pfeffer, Salz.</p>
+    <p>Zubereitung: Bereite den Mürbeteig zu, fülle ihn mit einer Mischung aus Eiern, Sahne, Speck und Käse und backe die Quiche für ca. 30 Minuten bei 180°C.</p>
+    
+    <h3>Mango Lassi</h3>
+    <p>Zutaten: Mango, Joghurt, Milch, Zucker, Kardamom.</p>
+    <p>Zubereitung: Püriere die Mango und mische sie mit Joghurt, Milch, Zucker und einer Prise Kardamom.</p>
+
+    <h3>Avocado-Toast</h3>
+    <p>Zutaten: Avocado, Vollkornbrot, Zitronensaft, Salz, Pfeffer, Chiliflocken.</p>
+    <p>Zubereitung: Zerdrücke die Avocado und verteile sie auf dem getoasteten Brot. Mit Zitronensaft, Salz, Pfeffer und Chiliflocken würzen.</p>
+
+    <div class="gallery">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/036/498/039/small/ai-generated-spaghetti-carbonara-with-bacon-bits-on-transparent-background-png.png" alt="Spaghetti Carbonara">
+        <img src="https://www.isshappy.de/wp-content/uploads/2020/05/Gemuese-Curry-vegan-Iss-Happy-1-200x200.jpg" alt="Veganes Curry">
+        <img src="https://www.gaumenfreundin.de/wp-content/uploads/2022/04/Tomaten-Mozzarella-Salat-mit-Avocado-200x200.jpg" alt="Caprese-Salat">
+        <img src="https://www.veganevibes.de/wp-content/uploads/2019/04/Tahini-Schoko-Cookies-vegane-Rezepte-top-250x250.jpg?ezimgfmt=rs:200x200/rscb16/ng:webp/ngcb16" alt="Schokoladenkekse">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/044/628/045/small/3d-rendering-of-a-lasagna-in-baking-dish-transparent-background-png.png" alt="Lasagne">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_q7_LFP0Ft-njRNzBNO35jns30IVfOTsBNQ&s" alt="Pancakes">
+        <!-- Neue Bilder -->
+        <img src="https://www.isshappy.de/wp-content/uploads/2020/06/Griechischer-Salat-vegan-Iss-Happy-4-200x200.jpg" alt="Griechischer Salat">
+        <img src="https://www.gaumenfreundin.de/wp-content/uploads/2023/10/Quiche-Lorraine-Gaumenfreundin-Rezept-200x200.jpg" alt="Quiche Lorraine">
+        <img src="https://www.isshappy.de/wp-content/uploads/2021/07/Mango-Lassi-vegan-Rezept-Iss-Happy-1-200x200.jpg" alt="Mango Lassi">
+        <img src="https://unimarkt.at/wp-content/uploads/avocado_toast.jpg" alt="Avocado Toast">
+    </div>
+</section>
+
+
+<section>
+        <section id="tiertipps">
+    <h2>Tier-Tipps</h2>
+    
+    <div class="tip-card">
+        <h3>Hunde</h3>
+        <p>Stelle sicher, dass dein Hund genug Bewegung bekommt und ausgewogen gefüttert wird.</p>
+    </div>
+    
+    <div class="tip-card">
+        <h3>Katzen</h3>
+        <p>Katzen brauchen Spielzeug und Kratzbäume, um gesund und glücklich zu bleiben.</p>
+    </div>
+    
+    <div class="tip-card">
+        <h3>Nager</h3>
+        <p>Für Nager ist es wichtig, genügend Platz und geeignete Nahrung zu haben.</p>
+    </div>
+    
+    <div class="tip-card">
+        <h3>Vögel</h3>
+        <p>Vögel brauchen tägliche Beschäftigung und frisches Wasser, um gesund zu bleiben.</p>
+    </div>
+
+    <!-- Neue Tier-Tipps -->
+    <div class="tip-card">
+        <h3>Fische</h3>
+        <p>Fische benötigen sauberes Wasser und eine ausgewogene Fütterung, um gesund zu bleiben. Achte darauf, das Aquarium regelmäßig zu reinigen.</p>
+    </div>
+
+    <div class="tip-card">
+        <h3>Reptilien</h3>
+        <p>Reptilien brauchen spezielle Wärmelampen und eine kontrollierte Umgebungstemperatur, um sich wohlzufühlen. Informiere dich über die idealen Bedingungen für deine Art.</p>
+    </div>
+
+    <div class="tip-card">
+        <h3>Pferde</h3>
+        <p>Pferde brauchen regelmäßige Bewegung und Pflege. Achte auf ihre Hufe und stelle sicher, dass sie ausreichend frisches Wasser und Futter haben.</p>
+    </div>
+
+    <div class="tip-card">
+        <h3>Meerschweinchen</h3>
+        <p>Meerschweinchen sind gesellige Tiere und fühlen sich in der Gruppe am wohlsten. Biete ihnen viel Platz, Heu und frisches Gemüse.</p>
+    </div>
+</section>
+
+
+        <section id="coolesachen">
+<section>
+    <h2>Coole Sachen</h2>
+    <ul>
+        <li>Leckere BBQ-Rezepte für den Sommer</li>
+        <li>DIY-Projekte für dein Zuhause</li>
+        <li>Faszinierende Fakten über Tiere</li>
+        <li>Gesunde Snacks für Zwischendurch</li>
+        <li>Tipps für nachhaltiges Leben</li>
+        
+        <!-- Neue coole Sachen -->
+        <li>Inspirierende Reiseziele für deinen nächsten Urlaub</li>
+        <li>Kreative Bastelideen für Kinder</li>
+        <li>Technik-Gadgets, die dein Leben erleichtern</li>
+        <li>Umweltfreundliche Produkte, die du ausprobieren solltest</li>
+        <li>Motivierende Zitate für einen positiven Start in den Tag</li>
+        <li>Unterhaltsame Brettspiele für die ganze Familie</li>
+        <li>Einsteiger-Tipps für das Gärtnern auf dem Balkon</li>
+        <li>Die besten Apps für persönliche Finanzen und Budgetierung</li>
+    </ul>
+</section>
+
+
+    </div>
+
+    <footer>
+    </footer>
+
+</body>
+</html>

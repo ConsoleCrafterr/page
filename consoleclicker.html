@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Console Clicker</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image: url('https://img.freepik.com/premium-photo/dark-painting-mountain-with-dark-background-with-moon-stars_994023-200674.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding-bottom: 120px;
+    }
+    .container {
+        width: 90%;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .container h1 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+    .cookie {
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .cookie img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        transition: transform 0.2s ease-out;
+    }
+    .cookie img:hover {
+        transform: scale(1.1);
+    }
+    .tooltip {
+        visibility: hidden;
+        width: 120px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .cookie:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+    .upgrade {
+        margin-top: 20px;
+        text-align: left;
+    }
+    .upgrade button {
+        margin: 5px;
+        padding: 12px 30px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #ffeb3b;
+        border: none;
+        border-radius: 30px;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+    .upgrade button:hover {
+        background-color: #fdd835;
+    }
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 10px 0;
+    }
+    .footer button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #ffeb3b;
+        border: none;
+        border-radius: 30px;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+    .footer button:hover {
+        background-color: #fdd835;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Console Clicker</h1>
+        <div class="cookie">
+            <a href="#" onclick="klickAufKeks()">
+                <img src="data:image/jpeg;base64,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" alt="Keks">
+            </a>
+            <div class="tooltip">Klicke mich!</div>
+        </div>
+        <div id="kekseZaehler" style="font-size: 24px; margin-top: 20px;">
+            Kekse: <span id="anzahlKekse">0</span>
+        </div>
+        <div class="upgrade">
+            <h2>Upgrades:</h2>
+            <button onclick="kaufeUpgrade(1)">Upgrade 1 (x3 Klickwert) - Kosten: <span id="upgradeKosten1">100</span></button><br>
+            <button onclick="kaufeUpgrade(2)">Upgrade 2 (x5 Klickwert) - Kosten: <span id="upgradeKosten2">250</span></button><br>
+            <button onclick="kaufeUpgrade(3)">Upgrade 3 (x10 Klickwert) - Kosten: <span id="upgradeKosten3">500</span></button><br>
+        </div>
+    </div>
+
+    <div class="footer">
+    </div>
+
+    <script>
+        var anzahlKekse = 0;
+        var klickMultiplikator = 1;
+        var upgradeKosten1 = 100;
+        var upgradeKosten2 = 250;
+        var upgradeKosten3 = 500;
+
+        function klickAufKeks() {
+            anzahlKekse += klickMultiplikator;
+            document.getElementById('anzahlKekse').innerText = anzahlKekse;
+        }
+
+        function kaufeUpgrade(upgradeNummer) {
+            var upgradeKosten = 0;
+            var multiplikator = 1;
+            
+            switch (upgradeNummer) {
+                case 1:
+                    upgradeKosten = upgradeKosten1;
+                    multiplikator = 3;
+                    break;
+                case 2:
+                    upgradeKosten = upgradeKosten2;
+                    multiplikator = 5;
+                    break;
+                case 3:
+                    upgradeKosten = upgradeKosten3;
+                    multiplikator = 10;
+                    break;
+                default:
+                    alert("Ungültige Upgrade-Nummer!");
+                    return;
+            }
+            
+            if (anzahlKekse >= upgradeKosten) {
+                anzahlKekse -= upgradeKosten;
+                klickMultiplikator *= multiplikator;
+                switch (upgradeNummer) {
+                    case 1:
+                        upgradeKosten1 *= 2;
+                        document.getElementById('upgradeKosten1').innerText = upgradeKosten1;
+                        break;
+                    case 2:
+                        upgradeKosten2 *= 2;
+                        document.getElementById('upgradeKosten2').innerText = upgradeKosten2;
+                        break;
+                    case 3:
+                        upgradeKosten3 *= 2;
+                        document.getElementById('upgradeKosten3').innerText = upgradeKosten3;
+                        break;
+                }
+                document.getElementById('anzahlKekse').innerText = anzahlKekse;
+            } else {
+                alert("Nicht genug Kekse, um das Upgrade zu kaufen!");
+            }
+        }
+
+        // Automatisch einen Keks alle 10 Sekunden hinzufügen
+        setInterval(function() {
+            anzahlKekse++;
+            document.getElementById('anzahlKekse').innerText = anzahlKekse;
+        }, 10000); // 10000 Millisekunden = 10 Sekunden
+    </script>
+</body>
+</html>

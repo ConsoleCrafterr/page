@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geheimsprache Übersetzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Übersetzer</h1>
+    <textarea id="inputText" placeholder="Gib deinen Text hier ein..."></textarea>
+    <br>
+    <button onclick="translateText('toSecret')">In Geheimsprache übersetzen</button>
+    <button onclick="translateText('toNormal')">In normalen Text übersetzen</button>
+    <h2>Übersetzter Text:</h2>
+    <textarea id="outputText" readonly placeholder="Der übersetzte Text erscheint hier..."></textarea>
+
+    <script>
+        function atbashCipher(text) {
+            let result = '';
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                if (char.match(/[A-Z]/)) {
+                    result += String.fromCharCode('Z'.charCodeAt(0) - (char.charCodeAt(0) - 'A'.charCodeAt(0)));
+                } else if (char.match(/[a-z]/)) {
+                    result += String.fromCharCode('z'.charCodeAt(0) - (char.charCodeAt(0) - 'a'.charCodeAt(0)));
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+
+        function translateText(mode) {
+            const input = document.getElementById('inputText').value;
+            let output = '';
+
+            if (mode === 'toSecret' || mode === 'toNormal') {
+                // Da die Atbash-Chiffre symmetrisch ist, kann derselbe Algorithmus verwendet werden
+                output = atbashCipher(input);
+            }
+
+            document.getElementById('outputText').value = output;
+        }
+    </script>
+</body>
+</html>
